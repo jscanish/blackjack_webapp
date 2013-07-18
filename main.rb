@@ -18,9 +18,9 @@ helpers do
     total = 0
 
     values.each do |value|
-      if value == "Ace"
+      if value == "ace"
         total += 11
-      elsif value == "King" || value == "Queen" || value == "Jack"
+      elsif value == "king" || value == "queen" || value == "jack"
         total += 10
       else
         total += value.to_i
@@ -28,7 +28,7 @@ helpers do
     end
 
     #correct for aces
-    values.select{ |v| v == "Ace" }.count.times do
+    values.select{ |v| v == "ace" }.count.times do
       total -= 10 if total > 21
     end
 
@@ -50,6 +50,13 @@ helpers do
     @success = "#{msg}"
     session[:money] = session[:money] + session[:player_bet].to_i
     @show_hit_and_stay = false
+  end
+
+  def card_image(card)
+    suit = card[0]
+    value = card[1]
+
+    "<img src='/images/cards/#{suit}_#{value}.jpg' class='card_image'>"
   end
 end
 
@@ -120,7 +127,7 @@ get '/game' do
 
   #create deck
   suits = %w[hearts spades diamonds clubs]
-  values = %w[2 3 4 5 6 7 8 9 10 Jack Queen King Ace]
+  values = %w[2 3 4 5 6 7 8 9 10 jack queen king ace]
   session[:deck] = suits.product(values).shuffle!
 
   #deal cards

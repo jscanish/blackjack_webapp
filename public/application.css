@@ -1,0 +1,12 @@
+form#hit_form {
+  display: inline;
+}
+
+form#stay_form {
+  display: inline;
+}
+
+img.card_image {
+  margin-right: 10px;
+  width: 100px;
+}
