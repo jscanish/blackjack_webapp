@@ -1,7 +1,3 @@
-<%= @winner %>
-<%= @loser %>
-<%= @tie %>
-<%= @stay %>
 <br/>
 ---Dealer cards---
 <% session[:dealer_cards].each do |card| %>
@@ -20,21 +16,22 @@
 
 <p>You bet $<%= session[:player_bet] %>.</p>
 
-<% if @stay %>
-<form action='/game/dealer' method='post'>
-  <input type='submit' value='Dealer Turn'>
-</form>
+<% if @show_dealer_button %>
+  <form action='/game/dealer' method='post'>
+    <input type='submit' value='Dealer Turn'>
+  </form>
 <% end %>
 
 <% if @show_hit_and_stay %>
-<p>Would you like to hit or stay</p>
-<form style='display: inline' action='/game/hit' method='post'>
-  <input type='submit' value='Hit' class='btn btn-success'>
-</form>
+  <p>Would you like to hit or stay</p>
 
-<form style='display: inline' action='/game/stay' method='post'>
-  <input type='submit' value='Stay' class='btn btn-info'>
-</form>
+  <form style='display: inline' action='/game/hit' method='post'>
+    <input type='submit' value='Hit' class='btn btn-success'>
+  </form>
+
+  <form style='display: inline' action='/game/stay' method='post'>
+    <input type='submit' value='Stay' class='btn btn-info'>
+  </form>
 <% end %>
 
 

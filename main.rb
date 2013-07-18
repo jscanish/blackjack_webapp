@@ -33,28 +33,29 @@ helpers do
     end
 
     total
-    end
+  end
 
-    def winner(msg)
-      @winner = "#{msg}"
-      session[:money] = session[:money] + session[:player_bet].to_i*2
-      @show_hit_and_stay = false
-    end
+  def winner(msg)
+    @success = "#{msg}"
+    session[:money] = session[:money] + session[:player_bet].to_i*2
+    @show_hit_and_stay = false
+  end
 
-    def loser(msg)
-      @loser = "#{msg}"
-      @show_hit_and_stay = false
-    end
+  def loser(msg)
+    @error = "#{msg}"
+    @show_hit_and_stay = false
+  end
 
-    def tie(msg)
-      @tie = "#{msg}"
-      session[:money] = session[:money] + session[:player_bet].to_i
-      @show_hit_and_stay = false
-    end
+  def tie(msg)
+    @success = "#{msg}"
+    session[:money] = session[:money] + session[:player_bet].to_i
+    @show_hit_and_stay = false
+  end
 end
 
 before do
   @show_hit_and_stay = true
+  @show_dealer_button = false
 end
 
 get '/' do
@@ -152,8 +153,9 @@ post '/game/hit' do
 end
 
 post '/game/stay' do
-  @stay = "You have decided to stay with #{calculate_total(session[:player_cards])}."
+  @success = "You have decided to stay with #{calculate_total(session[:player_cards])}."
   @show_hit_and_stay = false
+  @show_dealer_button = true
   erb :game
 end
 
