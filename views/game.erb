@@ -1,7 +1,7 @@
 
 <% if @show_dealer_button %>
   <form action='/game/dealer' method='post'>
-    <input type='submit' value='Dealer Turn' class='btn btn-danger'>
+    <h4>Click to start the dealer's turn!</h4><input type='submit' value='Dealer Turn' class='btn btn-danger'>
   </form>
 <% end %>
 
@@ -18,7 +18,7 @@
 
 
 
-<div class="well"><h4>Player cards:</h4>
+<div class="well"><h4><%= session[:player_name] %>'s cards:</h4>
 <% session[:player_cards].each do |card| %>
   <%= card_image(card) %>
 <% end %>
