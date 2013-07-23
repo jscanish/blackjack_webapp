@@ -1,6 +1,14 @@
+<div id="game">
+
+  <%if @loser %>
+    <div class="alert alert-error"><h4><%=@loser%></h4></div>
+  <% end %>
+  <%if @winner %>
+    <div class="alert alert-success"><h4><%=@winner%></h4></div>
+  <% end %>
 
 <% if @show_dealer_button %>
-  <form action='/game/dealer' method='post'>
+  <form id ="dealer_button" action='/game/dealer' method='post'>
     <h4>Click to start the dealer's turn!</h4><input type='submit' value='Dealer Turn' class='btn btn-danger'>
   </form>
 <% end %>
@@ -39,4 +47,5 @@
   </form>
 <% end %>
 
+</div>
 

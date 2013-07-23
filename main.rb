@@ -36,18 +36,18 @@ helpers do
   end
 
   def winner(msg)
-    @success = "#{msg}"
+    @winner = "#{msg}"
     session[:money] = session[:money] + session[:player_bet].to_i*2
     @show_hit_and_stay = false
   end
 
   def loser(msg)
-    @error = "#{msg}"
+    @loser = "#{msg}"
     @show_hit_and_stay = false
   end
 
   def tie(msg)
-    @success = "#{msg}"
+    @winner = "#{msg}"
     session[:money] = session[:money] + session[:player_bet].to_i
     @show_hit_and_stay = false
   end
@@ -156,11 +156,11 @@ post '/game/hit' do
     winner("Blackjack! You win")
   end
 
-  erb :game
+  erb :game, layout: false
 end
 
 post '/game/stay' do
-  @success = "You have decided to stay with #{calculate_total(session[:player_cards])}."
+  @winner = "You have decided to stay with #{calculate_total(session[:player_cards])}."
   @show_hit_and_stay = false
   @show_dealer_button = true
   erb :game
@@ -187,7 +187,7 @@ get '/game/dealer' do
     redirect '/game/dealer'
   end
 
-  erb :game
+  erb :game, layout: false
 end
 
 get '/game/compare' do
@@ -197,11 +197,11 @@ get '/game/compare' do
   if player_total == dealer_total
     tie("It's a tie! Try again.")
   elsif player_total < dealer_total
-    loser("You lose!")
+    loser("You lose! You stayed with #{calculate_total(session[:player_cards])} and the dealer stayed with #{calculate_total(session[:dealer_cards])}.")
   else
-    winner("You win!")
+    winner("You win! You stayed with #{calculate_total(session[:player_cards])} and the dealer stayed with #{calculate_total(session[:dealer_cards])}.")
   end
-  erb :game
+  erb :game, layout: false
 end
 
 
