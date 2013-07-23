@@ -14,7 +14,7 @@
 <% end %>
 
 
-<div class="well"><h4>Dealer cards:</h4>
+<div id= "dealer_well" class="well"><h4>Dealer cards:</h4>
   <% session[:dealer_cards].each_with_index do |card, i| %>
     <% if session[:turn] != "dealer" && i == 0 %>
       <img src='/images/cards/cover.jpg' class='card_image'>
@@ -26,13 +26,13 @@
 
 
 
-<div class="well"><h4><%= session[:player_name] %>'s cards:</h4>
+<div id="player_well" class="well"><h4><%= session[:player_name] %>'s cards:</h4>
 <% session[:player_cards].each do |card| %>
   <%= card_image(card) %>
 <% end %>
 </div>
 
-<h4>You have a total of <%= calculate_total(session[:player_cards]) %>, and you bet $<%= session[:player_bet] %>.</h4>
+<h4>You have a total of <%= calculate_total(session[:player_cards]) %>. You bet $<%= session[:player_bet] %>.</h4>
 
 
 <% if @show_hit_and_stay %>

@@ -10,3 +10,11 @@ img.card_image {
   margin-right: 10px;
   width: 100px;
 }
+
+div#dealer_well {
+  background-color: #d0d0d0;
+}
+
+div#player_well {
+  background-color: #d0d0d0;
+}
