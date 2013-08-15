@@ -1,4 +1,3 @@
-1. Make sure the 'sinatra' gem is installed.
-2. From the command line, you can start the server by 'ruby main.rb'
-3. If you have the 'shotgun' gem installed, you can instead run 'shotgun main.rb'
-4. ctrl+c to stop the server
+A project from Tealeaf Academy's Ruby course. Built with Sinatra, Twitter Bootstrap, and Ajax.
+
+Deployed at: http://shielded-fjord-8273.herokuapp.com
